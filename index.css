@@ -1,93 +1,183 @@
+body {
+  padding: 200px 0;
+}
+
+.carousel-section {
+}
+
 #carousel-container {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+#carousel-box {
+  width: 100%;
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  display: flex;
+  gap: 21px;
+  min-width: 100%;
+  margin-right: 20px; /* Right margin for each slide */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 40px 0;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 480px) {
+    padding: 0 16px 0;
+  }
+}
+
+.carousel-item__content {
+  flex: 1 1 45%;
+
+  img {
+    max-height: 395px;
+    object-fit: cover;
     width: 100%;
-    display: flex;
-    overflow: hidden;
-    position: relative;
+  }
+}
+
+.carousel-controls {
+  width: 24px;
+  cursor: pointer;
+
+  &:first-of-type {
+    padding-right: 43px;
   }
 
-  #carousel-box {
-    width: 100%;
+  &:last-of-type {
+    padding-left: 43px;
+  }
+}
+
+.slides-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
+}
+
+.carousel-headings {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 900;
+    font-family: "Arial Black", sans-serif;
+    text-transform: uppercase;
+  }
+}
+
+.carousel-thumbs {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 1080px) {
     display: flex;
-    transition: transform 0.5s ease;
   }
 
-  .carousel-item {
+  ul {
     display: flex;
-    gap: 21px;
-    min-width: 100%;
-    margin-right: 20px; /* Right margin for each slide */
-    box-sizing: border-box;
-    overflow: hidden;
+    gap: 18px;
+    padding-left: 0;
+    list-style: none;
   }
 
-  .wrapper {
+  .carousel-thumb-item {
+    width: 8px;
+    aspect-ratio: 1;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .carousel-thumb-item--active {
+    background-color: black;
+  }
+}
+
+.carousel-speakers {
+  .carousel-headings {
     width: 100%;
-    max-width: 940px;
+    justify-content: flex-end;
+    border-top: 1px solid black;
+    padding-top: 26px;
   }
 
   .carousel-item__content {
-    flex: 1 1 45%;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+    }
 
     img {
-      max-height: 395px;
-      object-fit: cover;
       width: 100%;
+      max-height: unset;
+      aspect-ratio: 1;
     }
   }
 
-  .carousel-controls {
-    width: 24px;
-    cursor: pointer;
+  .carousel-item__content-image-wrapper {
+    flex: 1 1 25%;
+    aspect-ratio: 1;
 
-    &:first-of-type {
-      padding-right: 8px;
-    }
-
-    &:last-of-type {
-      padding-left: 8px;
+    @media screen and (max-width: 820px) {
+      flex: 1 1 50%;
     }
   }
 
-  .slides-count {
+  .carousel-item__content-text {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+    gap: 20px;
+    flex: 1 1 75%;
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    }
   }
 
-  .carousel-headings {
+  .speaker-title {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
 
-    h2 {
+    p {
       margin: 0;
-      font-size: 32px;
-      font-weight: 900;
-      font-family: "Arial Black", sans-serif;
       text-transform: uppercase;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+
+    span {
+      font-size: 16px;
+      line-height: 1.5;
     }
   }
 
-  .carousel-thumbs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    ul {
-        display: flex;
-        gap: 8px;
-        list-style: none;
-    }
-
-    .carousel-thumb-item {
-        width: 8px;
-        aspect-ratio: 1;
-        border: 1px solid black;
-        border-radius: 50%;
-    }
-
-    .carousel-thumb-item--active {
-        background-color: black;
-    }
+  .speaker-description {
+    font-size: 16px;
+    line-height: 1.5;
   }
+}

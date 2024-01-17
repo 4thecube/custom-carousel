@@ -7,7 +7,6 @@
     <style>
       body {
         margin: 0;
-        margin-top: 20vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -77,7 +76,81 @@
       </div>
 
       <!-- thumbs will be rendered by script -->
-      <div id="carousel-1-thumbs" class="carousel-thumbs"></div>
+      <div id="carousel-thumbs" class="carousel-thumbs"></div>
+    </div>
+
+    <div
+      id="carousel-instance-2"
+      class="wrapper carousel-section carousel-speakers"
+    >
+      <div class="carousel-headings">
+        <p class="slides-count">
+          <img
+            id="prev-slide-control"
+            class="carousel-controls carousel-control-prev"
+            src="./left.svg"
+            alt=""
+          />
+          <span id="slides-count"> 1 of 3</span>
+          <img
+            id="next-slide-control"
+            class="carousel-controls carousel-control-next"
+            src="./right.svg"
+            alt=""
+          />
+        </p>
+      </div>
+      <div id="carousel-container">
+        <div id="carousel-box">
+          <div class="carousel-item">
+            <div class="carousel-item__content">
+              <div class="carousel-item__content-image-wrapper">
+                <img
+                  src="https://images.pexels.com/photos/18287982/pexels-photo-18287982/free-photo-of-spiders.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="carousel-item__content-text">
+                <div class="speaker-title">
+                  <p>Antonina Skrypnyk</p>
+                  <span>Director of Business Solutions</span>
+                </div>
+                <div class="speaker-description">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Eaque quod quisquam maiores nihil possimus culpa id fugit qui
+                  nobis, laboriosam dolore animi fuga odit ipsam, ipsa
+                  consectetur quis iure saepe.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-item__content">
+              <div class="carousel-item__content-image-wrapper">
+                <img
+                  src="https://images.pexels.com/photos/18287982/pexels-photo-18287982/free-photo-of-spiders.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="carousel-item__content-text">
+                <div class="speaker-title">
+                  <p>John Doe</p>
+                  <span>Director of Business Solutions</span>
+                </div>
+                <div class="speaker-description">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Eaque quod quisquam maiores nihil possimus culpa id fugit qui
+                  nobis, laboriosam dolore animi fuga odit ipsam, ipsa
+                  consectetur quis iure saepe.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="carousel-thumbs" class="carousel-thumbs"></div>
     </div>
 
     <script src="carousel.js"></script>

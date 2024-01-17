@@ -1,4 +1,9 @@
-function carouselInstanse(carouselId) {
+/*
+  @param {number} carouselId - a number part from id attribute. 
+  @param {boolean} hasTwoItemsPerSlide 
+*/
+
+function carouselInstanse(carouselId, hasTwoItemsPerSlide) {
   const carousel = document.querySelector(
     `#carousel-instance-${carouselId} #carousel-box`
   );
@@ -6,6 +11,16 @@ function carouselInstanse(carouselId) {
   let viewportWidth = null;
   let currentIndex = 0;
   let slides = calculateSlides();
+
+  if (slides <= 1) {
+    const controllers = document.querySelector(
+      `#carousel-instance-${carouselId} .slides-count`
+    );
+    controllers.style.display = "none";
+
+    /* Since we have only one slide, we can drop functionality */
+    return;
+  }
 
   let isDesktop = false;
   let isMobile = true;
@@ -24,21 +39,24 @@ function carouselInstanse(carouselId) {
 
     document.querySelector(
       `#carousel-instance-${carouselId} #slides-count`
-    ).innerText = currentIndex + 1 + " of " + slides;
+    ).innerHTML = currentIndex + 1 + "&nbsp;of&nbsp;" + slides;
+
     carousel.style.transform = `translateX(${newPosition}px)`;
 
     viewportWidth = window.innerWidth;
 
-    if (viewportWidth <= 820 && isDesktop) {
-      changeCarouselStructure(isDesktop, isMobile);
-      isDesktop = false;
-      isMobile = true;
-    }
-    // If the viewport width is greater than 820, and it was not mobile before
-    else if (viewportWidth > 820 && isMobile) {
-      changeCarouselStructure(isDesktop, isMobile);
-      isDesktop = true;
-      isMobile = false;
+    if (hasTwoItemsPerSlide) {
+      if (viewportWidth <= 820 && isDesktop) {
+        changeCarouselStructure(isDesktop, isMobile);
+        isDesktop = false;
+        isMobile = true;
+      }
+      // If the viewport width is greater than 820, and it was not mobile before
+      else if (viewportWidth > 820 && isMobile) {
+        changeCarouselStructure(isDesktop, isMobile);
+        isDesktop = true;
+        isMobile = false;
+      }
     }
 
     updateThumbs();
@@ -73,7 +91,7 @@ function carouselInstanse(carouselId) {
       `#carousel-instance-${carouselId} .carousel-thumb-item`
     );
     const prevActiveThumbs = document.querySelectorAll(
-      ".carousel-thumb-item--active"
+      `#carousel-instance-${carouselId} .carousel-thumb-item--active`
     );
 
     if (prevActiveThumbs.length >= 1) {
@@ -135,9 +153,11 @@ function carouselInstanse(carouselId) {
     if (isDesktop) {
       carousel.innerHTML = mobileStructure;
       slides = calculateSlides();
+      currentIndex = 0;
     } else if (isMobile) {
       carousel.innerHTML = desktopStructure;
       slides = calculateSlides();
+      currentIndex = 0;
     }
 
     slides = calculateSlides();
@@ -160,23 +180,29 @@ function carouselInstanse(carouselId) {
     /* functionality for swiping on touch devices */
     let touchstartX = 0;
     let touchendX = 0;
+    const touchTolarance = 50;
+
     function checkDirection() {
-      if (touchendX < touchstartX) {
+      if (touchendX < touchstartX && touchstartX - touchendX > touchTolarance) {
         nextSlide();
       }
-      if (touchendX > touchstartX) {
+      if (touchendX > touchstartX && touchendX - touchstartX > touchTolarance) {
         prevSlide();
       }
     }
 
-    document.addEventListener("touchstart", (e) => {
-      touchstartX = e.changedTouches[0].screenX;
-    });
+    document
+      .querySelector(`#carousel-instance-${carouselId}`)
+      .addEventListener("touchstart", (e) => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
 
-    document.addEventListener("touchend", (e) => {
-      touchendX = e.changedTouches[0].screenX;
-      checkDirection();
-    });
+    document
+      .querySelector(`#carousel-instance-${carouselId}`)
+      .addEventListener("touchend", (e) => {
+        touchendX = e.changedTouches[0].screenX;
+        checkDirection();
+      });
   }
 
   renderThumbs(carouselId);
@@ -184,4 +210,11 @@ function carouselInstanse(carouselId) {
   updateCarousel();
 }
 
-const carousel1 = carouselInstanse(1);
+/*
+  first param is carousel id, make sure that for each carousel on a page we have different id
+  second param is using for render two content items per slide:
+    true - mean that we have 2 columns with content per slide
+    false - mean that we have only one content column per slide
+*/
+const carousel1 = carouselInstanse(1, true);
+const carousel2 = carouselInstanse(2, false);
