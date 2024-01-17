@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      body {
+        margin: 0;
+        margin-top: 20vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="carousel-instance-1" class="wrapper carousel-section">
+      <div class="carousel-headings">
+        <h2>Memorable Location</h2>
+        <p class="slides-count">
+          <img
+            id="prev-slide-control"
+            class="carousel-controls carousel-control-prev"
+            src="./left.svg"
+            alt=""
+          />
+          <span id="slides-count"> 1 of 3</span>
+          <img
+            id="next-slide-control"
+            class="carousel-controls carousel-control-next"
+            src="./right.svg"
+            alt=""
+          />
+        </p>
+      </div>
+      <div id="carousel-container">
+        <div id="carousel-box">
+          <div class="carousel-item">
+            <div class="carousel-item__content">
+              <img
+                src="https://images.pexels.com/photos/18287982/pexels-photo-18287982/free-photo-of-spiders.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
+              <p>first item</p>
+            </div>
+            <div class="carousel-item__content">
+              <img
+                src="https://images.pexels.com/photos/18287982/pexels-photo-18287982/free-photo-of-spiders.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
+              <p>second item</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-item__content">
+              <img
+                src="https://images.pexels.com/photos/18287982/pexels-photo-18287982/free-photo-of-spiders.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
+              <p>third item</p>
+            </div>
+            <div class="carousel-item__content">
+              <img
+                src="https://images.pexels.com/photos/18287982/pexels-photo-18287982/free-photo-of-spiders.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
+              <p>fourth item</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-item__content">
+              <img
+                src="https://images.pexels.com/photos/18287982/pexels-photo-18287982/free-photo-of-spiders.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
+              <p>third item</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- thumbs will be rendered by script -->
+      <div id="carousel-1-thumbs" class="carousel-thumbs"></div>
+    </div>
+
+    <script src="carousel.js"></script>
+  </body>
+</html>
